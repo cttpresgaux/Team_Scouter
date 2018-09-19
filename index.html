@@ -15,15 +15,27 @@
 
 <body onload="FistInit()">
     <div id="controller">
-        <span>Division : &nbsp;</span>
-        <select id="SelectTeam" class="0" onchange="changeTeam()"></select>
-        <span>Adversaire : &nbsp;</span><span id=SelectAdv></span>
-        <button id="validationButton" disabled type="button" onclick="valider()">Valider</button>
+        <span id="controllerAdv">
+            <span>Division : &nbsp;</span>
+            <select id="SelectTeam" class="0" onchange="changeTeam()"></select>
+            <span>Adversaire : &nbsp;</span><span id=SelectAdv></span>
+            <button id="validationButton" disabled type="button" onclick="valider()">Valider</button>
+        </span>
+        <span id="controllerAffichage">
+            <span>Affichage : &nbsp;</span>
+            <select id="SelectAffichage" onchange="changeAffichage()">
+                <option value="Separe">Separé</option>
+                <option value="Complet">Complet</option>
+                <option value="1T">Premier Tour</option>
+                <option value="2T">Deuxieme Tour</option>
+                <option disabled value="Played">Joué</option>
+            </select>
+        </span>
     </div>
     <div id="loader" class="loader loader-default is-active" data-text data-blink></div>
     <div id="Titre1T">Premier Tour</div>
     <div id="Match1T">
-        <table id="J1" border="1" width="360">
+        <table id="J1">
             <colgroup>
                 <col width="25">
                 <col width="25">
@@ -71,7 +83,7 @@
                 </tr>
             </tbody>
         </table>
-        <table id="J2" border="1" width="360">
+        <table id="J2">
             <colgroup>
                 <col width="25">
                 <col width="25">
@@ -119,7 +131,7 @@
                 </tr>
             </tbody>
         </table>
-        <table id="J3" border="1" width="360">
+        <table id="J3">
             <colgroup>
                 <col width="25">
                 <col width="25">
@@ -167,7 +179,7 @@
                 </tr>
             </tbody>
         </table>
-        <table id="J4" border="1" width="360">
+        <table id="J4">
             <colgroup>
                 <col width="25">
                 <col width="25">
@@ -215,7 +227,7 @@
                 </tr>
             </tbody>
         </table>
-        <table id="J5" border="1" width="360">
+        <table id="J5">
             <colgroup>
                 <col width="25">
                 <col width="25">
@@ -263,7 +275,7 @@
                 </tr>
             </tbody>
         </table>
-        <table id="J6" border="1" width="360">
+        <table id="J6">
             <colgroup>
                 <col width="25">
                 <col width="25">
@@ -311,7 +323,7 @@
                 </tr>
             </tbody>
         </table>
-        <table id="J7" border="1" width="360">
+        <table id="J7">
             <colgroup>
                 <col width="25">
                 <col width="25">
@@ -359,7 +371,7 @@
                 </tr>
             </tbody>
         </table>
-        <table id="J8" border="1" width="360">
+        <table id="J8">
             <colgroup>
                 <col width="25">
                 <col width="25">
@@ -407,7 +419,7 @@
                 </tr>
             </tbody>
         </table>
-        <table id="J9" border="1" width="360">
+        <table id="J9">
             <colgroup>
                 <col width="25">
                 <col width="25">
@@ -455,7 +467,7 @@
                 </tr>
             </tbody>
         </table>
-        <table id="J10" border="1" width="360">
+        <table id="J10">
             <colgroup>
                 <col width="25">
                 <col width="25">
@@ -503,7 +515,7 @@
                 </tr>
             </tbody>
         </table>
-        <table id="J11" border="1" width="360">
+        <table id="J11">
             <colgroup>
                 <col width="25">
                 <col width="25">
@@ -554,7 +566,7 @@
     </div>
     <div id="Titre2T">Deuxieme Tour</div>
     <div id="Match2T">
-        <table id="J12" border="1" width="360">
+        <table id="J12">
             <colgroup>
                 <col width="25">
                 <col width="25">
@@ -602,7 +614,7 @@
                 </tr>
             </tbody>
         </table>
-        <table id="J13" border="1" width="360">
+        <table id="J13">
             <colgroup>
                 <col width="25">
                 <col width="25">
@@ -650,7 +662,7 @@
                 </tr>
             </tbody>
         </table>
-        <table id="J14" border="1" width="360">
+        <table id="J14">
             <colgroup>
                 <col width="25">
                 <col width="25">
@@ -698,7 +710,7 @@
                 </tr>
             </tbody>
         </table>
-        <table id="J15" border="1" width="360">
+        <table id="J15">
             <colgroup>
                 <col width="25">
                 <col width="25">
@@ -746,7 +758,7 @@
                 </tr>
             </tbody>
         </table>
-        <table id="J16" border="1" width="360">
+        <table id="J16">
             <colgroup>
                 <col width="25">
                 <col width="25">
@@ -794,7 +806,7 @@
                 </tr>
             </tbody>
         </table>
-        <table id="J17" border="1" width="360">
+        <table id="J17">
             <colgroup>
                 <col width="25">
                 <col width="25">
@@ -842,7 +854,7 @@
                 </tr>
             </tbody>
         </table>
-        <table id="J18" border="1" width="360">
+        <table id="J18">
             <colgroup>
                 <col width="25">
                 <col width="25">
@@ -890,7 +902,7 @@
                 </tr>
             </tbody>
         </table>
-        <table id="J19" border="1" width="360">
+        <table id="J19">
             <colgroup>
                 <col width="25">
                 <col width="25">
@@ -938,7 +950,7 @@
                 </tr>
             </tbody>
         </table>
-        <table id="J20" border="1" width="360">
+        <table id="J20">
             <colgroup>
                 <col width="25">
                 <col width="25">
@@ -986,7 +998,7 @@
                 </tr>
             </tbody>
         </table>
-        <table id="J21" border="1" width="360">
+        <table id="J21">
             <colgroup>
                 <col width="25">
                 <col width="25">
@@ -1034,7 +1046,7 @@
                 </tr>
             </tbody>
         </table>
-        <table id="J22" border="1" width="360">
+        <table id="J22">
             <colgroup>
                 <col width="25">
                 <col width="25">

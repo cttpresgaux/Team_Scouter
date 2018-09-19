@@ -1,6 +1,19 @@
 ﻿body {
 }
 
+#controller{
+    display: flex;
+    margin: 15px 30px 20px 30px;
+}
+
+#controllerAdv {
+    flex: 1;
+}
+
+#controllerAffichage {
+    
+}
+
 #Match1T table {
     display: inline-block;
 }
@@ -9,16 +22,18 @@
     display: inline-block;
 }
 
-#Titre1T {
+#Titre1T, #Titre2T {
     text-align: center;
-    margin: 15px;
     font: bolder 18px arial;
+    padding: 20px;
+}
+
+#Titre1T{
+
 }
 
 #Titre2T {
-    text-align: center;
-    margin: 15px;
-    font: bolder 18px arial;
+
 }
 
 .Week{
@@ -49,4 +64,15 @@
 
 .PlayerOrder, .PlayerRanking, .VictoryCount {
     text-align:center;
+}
+
+table {
+    margin: 5px;
+    padding: 3px;
+    border: 2px solid;
+    width: 360px;
+}
+
+td, th {
+    border: 2px inset;
 }

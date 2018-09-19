@@ -104,6 +104,29 @@ function changeTeam() {
     document.getElementById("SelectAdv").childNodes[newIndex].style = "";
 }
 
+function changeAffichage() {
+    var index = document.getElementById("SelectAffichage").selectedIndex;
+
+    switch (index) {
+        case 0:
+            affichageSepare();
+            break;
+        case 1:
+            affichageComplet();
+            break;
+        case 2:
+            affichage1T()
+            break;
+        case 3:
+            affichage2T();
+            break;
+        case 4:
+            affichagePlayed();
+            break;
+    }
+
+}
+
 function valider() {
     activateLoader()
     clearAllData();
@@ -493,5 +516,42 @@ function setData(resp) {
     }
 
     hideLoader();
+
+}
+
+
+
+
+//Function Affichage
+
+function affichageSepare() {
+    document.getElementById("Titre1T").style.display = "block";
+    document.getElementById("Titre2T").style.display = "block";
+    document.getElementById("Match1T").style.display = "block";
+    document.getElementById("Match2T").style.display = "block";
+}
+
+function affichageComplet() {
+    document.getElementById("Titre1T").style.display = "none";
+    document.getElementById("Titre2T").style.display = "none";
+    document.getElementById("Match1T").style.display = "inline";
+    document.getElementById("Match2T").style.display = "inline";
+}
+
+function affichage1T() {
+    document.getElementById("Titre1T").style.display = "block";
+    document.getElementById("Titre2T").style.display = "none";
+    document.getElementById("Match1T").style.display = "block";
+    document.getElementById("Match2T").style.display = "none";
+}
+
+function affichage2T() {
+    document.getElementById("Titre1T").style.display = "none";
+    document.getElementById("Titre2T").style.display = "block";
+    document.getElementById("Match1T").style.display = "none";
+    document.getElementById("Match2T").style.display = "block";
+}
+
+function affichagePlayed() {
 
 }
