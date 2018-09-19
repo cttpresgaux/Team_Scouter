@@ -1,0 +1,52 @@
+﻿body {
+}
+
+#Match1T table {
+    display: inline-block;
+}
+
+#Match2T table {
+    display: inline-block;
+}
+
+#Titre1T {
+    text-align: center;
+    margin: 15px;
+    font: bolder 18px arial;
+}
+
+#Titre2T {
+    text-align: center;
+    margin: 15px;
+    font: bolder 18px arial;
+}
+
+.Week{
+    font: bolder 18px arial;
+    vertical-align: middle;
+    text-align:center;
+    color: white;
+    background-color: black;
+}
+
+.Versus {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.Score {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.HomeTeam {
+    text-align: right;
+}
+
+.HomeScore {
+    text-align: right;
+}
+
+.PlayerOrder, .PlayerRanking, .VictoryCount {
+    text-align:center;
+}

@@ -1,0 +1,1088 @@
+﻿<!doctype html>
+
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+
+    <title>N115 - Team Scouter</title>
+    <meta name="description" content="The HTML5 Herald">
+    <meta name="author" content="SitePoint">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/css-loader.css">
+
+</head>
+
+<body onload="FistInit()">
+    <div id="controller">
+        <span>Division : &nbsp;</span>
+        <select id="SelectTeam" class="0" onchange="changeTeam()"></select>
+        <span>Adversaire : &nbsp;</span><span id=SelectAdv></span>
+        <button id="validationButton" disabled type="button" onclick="valider()">Valider</button>
+    </div>
+    <div id="loader" class="loader loader-default is-active" data-text data-blink></div>
+    <div id="Titre1T">Premier Tour</div>
+    <div id="Match1T">
+        <table id="J1" border="1" width="360">
+            <colgroup>
+                <col width="25">
+                <col width="25">
+                <col width="65">
+                <col width="65">
+                <col width="50">
+                <col width="65">
+                <col width="65">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td class="Week" colspan="2" rowspan="2">J1</td>
+                    <td class="HomeTeam" colspan="2"></td>
+                    <td class="Versus">VS</td>
+                    <td class="AwayTeam" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="HomeScore" colspan="2"></td>
+                    <td class="Score">Score</td>
+                    <td class="AwayScore" colspan="2"></td>
+                </tr>
+                <tr class="Player1">
+                    <td class="PlayerOrder">1</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player2">
+                    <td class="PlayerOrder">2</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player3">
+                    <td class="PlayerOrder">3</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player4">
+                    <td class="PlayerOrder">4</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="J2" border="1" width="360">
+            <colgroup>
+                <col width="25">
+                <col width="25">
+                <col width="65">
+                <col width="65">
+                <col width="50">
+                <col width="65">
+                <col width="65">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td class="Week" colspan="2" rowspan="2">J2</td>
+                    <td class="HomeTeam" colspan="2"></td>
+                    <td class="Versus">VS</td>
+                    <td class="AwayTeam" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="HomeScore" colspan="2"></td>
+                    <td class="Score">Score</td>
+                    <td class="AwayScore" colspan="2"></td>
+                </tr>
+                <tr class="Player1">
+                    <td class="PlayerOrder">1</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player2">
+                    <td class="PlayerOrder">2</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player3">
+                    <td class="PlayerOrder">3</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player4">
+                    <td class="PlayerOrder">4</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="J3" border="1" width="360">
+            <colgroup>
+                <col width="25">
+                <col width="25">
+                <col width="65">
+                <col width="65">
+                <col width="50">
+                <col width="65">
+                <col width="65">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td class="Week" colspan="2" rowspan="2">J3</td>
+                    <td class="HomeTeam" colspan="2"></td>
+                    <td class="Versus">VS</td>
+                    <td class="AwayTeam" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="HomeScore" colspan="2"></td>
+                    <td class="Score">Score</td>
+                    <td class="AwayScore" colspan="2"></td>
+                </tr>
+                <tr class="Player1">
+                    <td class="PlayerOrder">1</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player2">
+                    <td class="PlayerOrder">2</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player3">
+                    <td class="PlayerOrder">3</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player4">
+                    <td class="PlayerOrder">4</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="J4" border="1" width="360">
+            <colgroup>
+                <col width="25">
+                <col width="25">
+                <col width="65">
+                <col width="65">
+                <col width="50">
+                <col width="65">
+                <col width="65">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td class="Week" colspan="2" rowspan="2">J4</td>
+                    <td class="HomeTeam" colspan="2"></td>
+                    <td class="Versus">VS</td>
+                    <td class="AwayTeam" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="HomeScore" colspan="2"></td>
+                    <td class="Score">Score</td>
+                    <td class="AwayScore" colspan="2"></td>
+                </tr>
+                <tr class="Player1">
+                    <td class="PlayerOrder">1</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player2">
+                    <td class="PlayerOrder">2</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player3">
+                    <td class="PlayerOrder">3</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player4">
+                    <td class="PlayerOrder">4</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="J5" border="1" width="360">
+            <colgroup>
+                <col width="25">
+                <col width="25">
+                <col width="65">
+                <col width="65">
+                <col width="50">
+                <col width="65">
+                <col width="65">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td class="Week" colspan="2" rowspan="2">J5</td>
+                    <td class="HomeTeam" colspan="2"></td>
+                    <td class="Versus">VS</td>
+                    <td class="AwayTeam" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="HomeScore" colspan="2"></td>
+                    <td class="Score">Score</td>
+                    <td class="AwayScore" colspan="2"></td>
+                </tr>
+                <tr class="Player1">
+                    <td class="PlayerOrder">1</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player2">
+                    <td class="PlayerOrder">2</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player3">
+                    <td class="PlayerOrder">3</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player4">
+                    <td class="PlayerOrder">4</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="J6" border="1" width="360">
+            <colgroup>
+                <col width="25">
+                <col width="25">
+                <col width="65">
+                <col width="65">
+                <col width="50">
+                <col width="65">
+                <col width="65">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td class="Week" colspan="2" rowspan="2">J6</td>
+                    <td class="HomeTeam" colspan="2"></td>
+                    <td class="Versus">VS</td>
+                    <td class="AwayTeam" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="HomeScore" colspan="2"></td>
+                    <td class="Score">Score</td>
+                    <td class="AwayScore" colspan="2"></td>
+                </tr>
+                <tr class="Player1">
+                    <td class="PlayerOrder">1</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player2">
+                    <td class="PlayerOrder">2</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player3">
+                    <td class="PlayerOrder">3</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player4">
+                    <td class="PlayerOrder">4</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="J7" border="1" width="360">
+            <colgroup>
+                <col width="25">
+                <col width="25">
+                <col width="65">
+                <col width="65">
+                <col width="50">
+                <col width="65">
+                <col width="65">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td class="Week" colspan="2" rowspan="2">J7</td>
+                    <td class="HomeTeam" colspan="2"></td>
+                    <td class="Versus">VS</td>
+                    <td class="AwayTeam" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="HomeScore" colspan="2"></td>
+                    <td class="Score">Score</td>
+                    <td class="AwayScore" colspan="2"></td>
+                </tr>
+                <tr class="Player1">
+                    <td class="PlayerOrder">1</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player2">
+                    <td class="PlayerOrder">2</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player3">
+                    <td class="PlayerOrder">3</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player4">
+                    <td class="PlayerOrder">4</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="J8" border="1" width="360">
+            <colgroup>
+                <col width="25">
+                <col width="25">
+                <col width="65">
+                <col width="65">
+                <col width="50">
+                <col width="65">
+                <col width="65">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td class="Week" colspan="2" rowspan="2">J8</td>
+                    <td class="HomeTeam" colspan="2"></td>
+                    <td class="Versus">VS</td>
+                    <td class="AwayTeam" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="HomeScore" colspan="2"></td>
+                    <td class="Score">Score</td>
+                    <td class="AwayScore" colspan="2"></td>
+                </tr>
+                <tr class="Player1">
+                    <td class="PlayerOrder">1</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player2">
+                    <td class="PlayerOrder">2</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player3">
+                    <td class="PlayerOrder">3</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player4">
+                    <td class="PlayerOrder">4</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="J9" border="1" width="360">
+            <colgroup>
+                <col width="25">
+                <col width="25">
+                <col width="65">
+                <col width="65">
+                <col width="50">
+                <col width="65">
+                <col width="65">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td class="Week" colspan="2" rowspan="2">J9</td>
+                    <td class="HomeTeam" colspan="2"></td>
+                    <td class="Versus">VS</td>
+                    <td class="AwayTeam" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="HomeScore" colspan="2"></td>
+                    <td class="Score">Score</td>
+                    <td class="AwayScore" colspan="2"></td>
+                </tr>
+                <tr class="Player1">
+                    <td class="PlayerOrder">1</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player2">
+                    <td class="PlayerOrder">2</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player3">
+                    <td class="PlayerOrder">3</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player4">
+                    <td class="PlayerOrder">4</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="J10" border="1" width="360">
+            <colgroup>
+                <col width="25">
+                <col width="25">
+                <col width="65">
+                <col width="65">
+                <col width="50">
+                <col width="65">
+                <col width="65">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td class="Week" colspan="2" rowspan="2">J10</td>
+                    <td class="HomeTeam" colspan="2"></td>
+                    <td class="Versus">VS</td>
+                    <td class="AwayTeam" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="HomeScore" colspan="2"></td>
+                    <td class="Score">Score</td>
+                    <td class="AwayScore" colspan="2"></td>
+                </tr>
+                <tr class="Player1">
+                    <td class="PlayerOrder">1</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player2">
+                    <td class="PlayerOrder">2</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player3">
+                    <td class="PlayerOrder">3</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player4">
+                    <td class="PlayerOrder">4</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="J11" border="1" width="360">
+            <colgroup>
+                <col width="25">
+                <col width="25">
+                <col width="65">
+                <col width="65">
+                <col width="50">
+                <col width="65">
+                <col width="65">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td class="Week" colspan="2" rowspan="2">J11</td>
+                    <td class="HomeTeam" colspan="2"></td>
+                    <td class="Versus">VS</td>
+                    <td class="AwayTeam" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="HomeScore" colspan="2"></td>
+                    <td class="Score">Score</td>
+                    <td class="AwayScore" colspan="2"></td>
+                </tr>
+                <tr class="Player1">
+                    <td class="PlayerOrder">1</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player2">
+                    <td class="PlayerOrder">2</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player3">
+                    <td class="PlayerOrder">3</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player4">
+                    <td class="PlayerOrder">4</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="Titre2T">Deuxieme Tour</div>
+    <div id="Match2T">
+        <table id="J12" border="1" width="360">
+            <colgroup>
+                <col width="25">
+                <col width="25">
+                <col width="65">
+                <col width="65">
+                <col width="50">
+                <col width="65">
+                <col width="65">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td class="Week" colspan="2" rowspan="2">J12</td>
+                    <td class="HomeTeam" colspan="2"></td>
+                    <td class="Versus">VS</td>
+                    <td class="AwayTeam" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="HomeScore" colspan="2"></td>
+                    <td class="Score">Score</td>
+                    <td class="AwayScore" colspan="2"></td>
+                </tr>
+                <tr class="Player1">
+                    <td class="PlayerOrder">1</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player2">
+                    <td class="PlayerOrder">2</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player3">
+                    <td class="PlayerOrder">3</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player4">
+                    <td class="PlayerOrder">4</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="J13" border="1" width="360">
+            <colgroup>
+                <col width="25">
+                <col width="25">
+                <col width="65">
+                <col width="65">
+                <col width="50">
+                <col width="65">
+                <col width="65">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td class="Week" colspan="2" rowspan="2">J13</td>
+                    <td class="HomeTeam" colspan="2"></td>
+                    <td class="Versus">VS</td>
+                    <td class="AwayTeam" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="HomeScore" colspan="2"></td>
+                    <td class="Score">Score</td>
+                    <td class="AwayScore" colspan="2"></td>
+                </tr>
+                <tr class="Player1">
+                    <td class="PlayerOrder">1</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player2">
+                    <td class="PlayerOrder">2</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player3">
+                    <td class="PlayerOrder">3</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player4">
+                    <td class="PlayerOrder">4</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="J14" border="1" width="360">
+            <colgroup>
+                <col width="25">
+                <col width="25">
+                <col width="65">
+                <col width="65">
+                <col width="50">
+                <col width="65">
+                <col width="65">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td class="Week" colspan="2" rowspan="2">J14</td>
+                    <td class="HomeTeam" colspan="2"></td>
+                    <td class="Versus">VS</td>
+                    <td class="AwayTeam" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="HomeScore" colspan="2"></td>
+                    <td class="Score">Score</td>
+                    <td class="AwayScore" colspan="2"></td>
+                </tr>
+                <tr class="Player1">
+                    <td class="PlayerOrder">1</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player2">
+                    <td class="PlayerOrder">2</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player3">
+                    <td class="PlayerOrder">3</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player4">
+                    <td class="PlayerOrder">4</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="J15" border="1" width="360">
+            <colgroup>
+                <col width="25">
+                <col width="25">
+                <col width="65">
+                <col width="65">
+                <col width="50">
+                <col width="65">
+                <col width="65">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td class="Week" colspan="2" rowspan="2">J15</td>
+                    <td class="HomeTeam" colspan="2"></td>
+                    <td class="Versus">VS</td>
+                    <td class="AwayTeam" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="HomeScore" colspan="2"></td>
+                    <td class="Score">Score</td>
+                    <td class="AwayScore" colspan="2"></td>
+                </tr>
+                <tr class="Player1">
+                    <td class="PlayerOrder">1</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player2">
+                    <td class="PlayerOrder">2</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player3">
+                    <td class="PlayerOrder">3</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player4">
+                    <td class="PlayerOrder">4</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="J16" border="1" width="360">
+            <colgroup>
+                <col width="25">
+                <col width="25">
+                <col width="65">
+                <col width="65">
+                <col width="50">
+                <col width="65">
+                <col width="65">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td class="Week" colspan="2" rowspan="2">J16</td>
+                    <td class="HomeTeam" colspan="2"></td>
+                    <td class="Versus">VS</td>
+                    <td class="AwayTeam" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="HomeScore" colspan="2"></td>
+                    <td class="Score">Score</td>
+                    <td class="AwayScore" colspan="2"></td>
+                </tr>
+                <tr class="Player1">
+                    <td class="PlayerOrder">1</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player2">
+                    <td class="PlayerOrder">2</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player3">
+                    <td class="PlayerOrder">3</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player4">
+                    <td class="PlayerOrder">4</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="J17" border="1" width="360">
+            <colgroup>
+                <col width="25">
+                <col width="25">
+                <col width="65">
+                <col width="65">
+                <col width="50">
+                <col width="65">
+                <col width="65">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td class="Week" colspan="2" rowspan="2">J17</td>
+                    <td class="HomeTeam" colspan="2"></td>
+                    <td class="Versus">VS</td>
+                    <td class="AwayTeam" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="HomeScore" colspan="2"></td>
+                    <td class="Score">Score</td>
+                    <td class="AwayScore" colspan="2"></td>
+                </tr>
+                <tr class="Player1">
+                    <td class="PlayerOrder">1</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player2">
+                    <td class="PlayerOrder">2</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player3">
+                    <td class="PlayerOrder">3</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player4">
+                    <td class="PlayerOrder">4</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="J18" border="1" width="360">
+            <colgroup>
+                <col width="25">
+                <col width="25">
+                <col width="65">
+                <col width="65">
+                <col width="50">
+                <col width="65">
+                <col width="65">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td class="Week" colspan="2" rowspan="2">J18</td>
+                    <td class="HomeTeam" colspan="2"></td>
+                    <td class="Versus">VS</td>
+                    <td class="AwayTeam" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="HomeScore" colspan="2"></td>
+                    <td class="Score">Score</td>
+                    <td class="AwayScore" colspan="2"></td>
+                </tr>
+                <tr class="Player1">
+                    <td class="PlayerOrder">1</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player2">
+                    <td class="PlayerOrder">2</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player3">
+                    <td class="PlayerOrder">3</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player4">
+                    <td class="PlayerOrder">4</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="J19" border="1" width="360">
+            <colgroup>
+                <col width="25">
+                <col width="25">
+                <col width="65">
+                <col width="65">
+                <col width="50">
+                <col width="65">
+                <col width="65">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td class="Week" colspan="2" rowspan="2">J19</td>
+                    <td class="HomeTeam" colspan="2"></td>
+                    <td class="Versus">VS</td>
+                    <td class="AwayTeam" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="HomeScore" colspan="2"></td>
+                    <td class="Score">Score</td>
+                    <td class="AwayScore" colspan="2"></td>
+                </tr>
+                <tr class="Player1">
+                    <td class="PlayerOrder">1</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player2">
+                    <td class="PlayerOrder">2</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player3">
+                    <td class="PlayerOrder">3</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player4">
+                    <td class="PlayerOrder">4</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="J20" border="1" width="360">
+            <colgroup>
+                <col width="25">
+                <col width="25">
+                <col width="65">
+                <col width="65">
+                <col width="50">
+                <col width="65">
+                <col width="65">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td class="Week" colspan="2" rowspan="2">J20</td>
+                    <td class="HomeTeam" colspan="2"></td>
+                    <td class="Versus">VS</td>
+                    <td class="AwayTeam" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="HomeScore" colspan="2"></td>
+                    <td class="Score">Score</td>
+                    <td class="AwayScore" colspan="2"></td>
+                </tr>
+                <tr class="Player1">
+                    <td class="PlayerOrder">1</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player2">
+                    <td class="PlayerOrder">2</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player3">
+                    <td class="PlayerOrder">3</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player4">
+                    <td class="PlayerOrder">4</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="J21" border="1" width="360">
+            <colgroup>
+                <col width="25">
+                <col width="25">
+                <col width="65">
+                <col width="65">
+                <col width="50">
+                <col width="65">
+                <col width="65">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td class="Week" colspan="2" rowspan="2">J21</td>
+                    <td class="HomeTeam" colspan="2"></td>
+                    <td class="Versus">VS</td>
+                    <td class="AwayTeam" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="HomeScore" colspan="2"></td>
+                    <td class="Score">Score</td>
+                    <td class="AwayScore" colspan="2"></td>
+                </tr>
+                <tr class="Player1">
+                    <td class="PlayerOrder">1</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player2">
+                    <td class="PlayerOrder">2</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player3">
+                    <td class="PlayerOrder">3</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player4">
+                    <td class="PlayerOrder">4</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="J22" border="1" width="360">
+            <colgroup>
+                <col width="25">
+                <col width="25">
+                <col width="65">
+                <col width="65">
+                <col width="50">
+                <col width="65">
+                <col width="65">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td class="Week" colspan="2" rowspan="2">J22</td>
+                    <td class="HomeTeam" colspan="2"></td>
+                    <td class="Versus">VS</td>
+                    <td class="AwayTeam" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="HomeScore" colspan="2"></td>
+                    <td class="Score">Score</td>
+                    <td class="AwayScore" colspan="2"></td>
+                </tr>
+                <tr class="Player1">
+                    <td class="PlayerOrder">1</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player2">
+                    <td class="PlayerOrder">2</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player3">
+                    <td class="PlayerOrder">3</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+                <tr class="Player4">
+                    <td class="PlayerOrder">4</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                    <td class="VictoryCount"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
