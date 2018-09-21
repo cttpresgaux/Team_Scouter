@@ -36,6 +36,17 @@
 
 }
 
+.colSize1 {
+	width: 25px;
+}
+.colSize2 {
+	width: 50px;
+}
+.colSize3 {
+	width: 65px;
+}
+
+
 .Week{
     font: bolder 18px arial;
     vertical-align: middle;
@@ -70,7 +81,7 @@ table {
     margin: 5px;
     padding: 3px;
     border: 2px solid;
-    width: 360px;
+    width: 380px;
 }
 
 td, th {

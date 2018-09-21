@@ -60,6 +60,7 @@ function Init() {
         }
     }
     document.getElementById("TeamA").style = "";
+	hideLoader();
 };
 
 function importCalendrier() {
@@ -73,7 +74,7 @@ function importCalendrier() {
             + '</soapenv:Envelope>'
 
 
-    soap(xml, setCalendrier);
+    soap(xml, setCalendrier, importADVDB);
 }
 
 function importADVDB() {
@@ -87,7 +88,7 @@ function importADVDB() {
             +'</soapenv:Envelope>';
 
 
-    soap(xml, setADVDB);
+    soap(xml, setADVDB, Init);
     //alert(resp);
 };
 
@@ -148,7 +149,7 @@ function valider() {
             + '</soapenv:Envelope>'
 
 
-    soap(xml, setData);
+    soap(xml, setData, hideLoader);
 }
 
 function activateLoader() {
@@ -164,7 +165,7 @@ function hideLoader() {
 
 //Function Utils
 
-function soap(strRequest, callback) {
+function soap(strRequest, callback, _afterCallback) {
     var xmlhttp = new XMLHttpRequest();
 
     //replace second argument with the path to your Secret Server webservices
@@ -179,7 +180,7 @@ function soap(strRequest, callback) {
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4) {
             //alert(xmlhttp.responseText);
-            callback(xmlhttp.responseText);
+            callback(xmlhttp.responseText, _afterCallback);
         }
     };
 
@@ -206,14 +207,8 @@ function clearDataByClassName(name) {
 
 
 // Callback Function
-function callbackTest(resp) {
-	var oParser = new DOMParser();
-	var oDOM = oParser.parseFromString(resp, "application/xml");
 
-	alert(oDOM);
-};
-
-function setCalendrier(resp) {
+function setCalendrier(resp, callback) {
     Calendrier = [];
     for (var i = 1; i <= 22; i++) { Calendrier[(i)] = {} }
 
@@ -316,10 +311,10 @@ function setCalendrier(resp) {
     }
 
     NumTeam = NumberOfTeam;
-    importADVDB()
+    callback()
 }
 
-function setADVDB(resp) {
+function setADVDB(resp, callback) {
 	var oParser = new DOMParser();
     var oDOM = oParser.parseFromString(resp, "application/xml");
 
@@ -368,15 +363,14 @@ function setADVDB(resp) {
 	      //}
 	      
 	    }
-	  }
-
+	}
     Divs = Teams;
-    hideLoader();
     //alert("end Import");
-    Init();
-};
+    callback();
+	
+	};
 
-function setData(resp) {
+function setData(resp, callback) {
     //alert("Start Data Parsing");
     var oParser = new DOMParser();
     var oDOM = oParser.parseFromString(resp, "application/xml");
@@ -418,12 +412,14 @@ function setData(resp) {
                     break;
                 case "HomeTeam":
                     HomeTeam = matches[i].children[_i].innerHTML;
+					HomeTeam = HomeTeam.replace("Palette", "Pal.");
                     break;
                 case "AwayClub":
                     AwayClub = matches[i].children[_i].innerHTML;
                     break;
                 case "AwayTeam":
                     AwayTeam = matches[i].children[_i].innerHTML;
+					AwayTeam = AwayTeam.replace("Palette", "Pal.");
                     break;
                 case "IsHomeForfeited":
                     IsHomeForfeited = matches[i].children[_i].innerHTML;
@@ -514,8 +510,8 @@ function setData(resp) {
 
         }
     }
-
-    hideLoader();
+	
+	callback();
 
 }
 
