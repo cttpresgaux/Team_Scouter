@@ -58,11 +58,13 @@
 .Versus {
     vertical-align: middle;
     text-align: center;
+    background-color: grey;
 }
 
 .Score {
     vertical-align: middle;
     text-align: center;
+    background-color: grey;
 }
 
 .HomeTeam {
@@ -86,4 +88,14 @@ table {
 
 td, th {
     border: 2px inset;
+}
+
+.myTeam{
+    background-color: lightskyblue;
+}
+.isHome{
+    
+}
+.isAway {
+    border-color: red;
 }

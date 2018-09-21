@@ -106,23 +106,29 @@ function changeTeam() {
 }
 
 function changeAffichage() {
-    var index = document.getElementById("SelectAffichage").selectedIndex;
+    var index = document.getElementById("SelectAffichage").value;
 
     switch (index) {
-        case 0:
+        case "Separed":
             affichageSepare();
             break;
-        case 1:
+        case "Full":
             affichageComplet();
             break;
-        case 2:
+        case "1T":
             affichage1T()
             break;
-        case 3:
+        case "2T":
             affichage2T();
             break;
-        case 4:
+        case "Played":
             affichagePlayed();
+            break;
+        case "Home":
+            affichageHome();
+            break;
+        case "Away":
+            affichageAway();
             break;
     }
 
@@ -451,6 +457,13 @@ function setData(resp, callback) {
         document.getElementById("J" + week).getElementsByClassName("AwayScore")[0].innerHTML = Score[1];
 
         var isHome = (HomeTeam == adv.team);
+        if (isHome) {
+            document.getElementById("J" + week).getElementsByClassName("HomeTeam")[0].classList.add("myTeam");
+            document.getElementById("J" + week).classList.add("isHome");
+        } else {
+            document.getElementById("J" + week).getElementsByClassName("AwayTeam")[0].classList.add("myTeam");
+            document.getElementById("J" + week).classList.add("isAway");
+        }
 
         if (details.children[0].innerHTML == "true") {
             //alert("Details OK");
@@ -549,5 +562,13 @@ function affichage2T() {
 }
 
 function affichagePlayed() {
+
+}
+
+function affichageAway() {
+
+}
+
+function affichageHome() {
 
 }
