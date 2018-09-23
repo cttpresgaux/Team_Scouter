@@ -166,6 +166,7 @@ function activateLoader() {
 function hideLoader() {
     document.getElementById("validationButton").disabled = false;
     document.getElementById("loader").className = "loader loader-default";
+    changeAffichage();
 }
 
 
@@ -464,10 +465,10 @@ function setData(resp, callback) {
         var isHome = (HomeTeam == adv.team);
         if (isHome) {
             document.getElementById("J" + week).getElementsByClassName("HomeTeam")[0].classList.add("myTeam");
-            document.getElementById("J" + week).classList.add("isHome");
+            document.getElementById("J" + week).className = "isHome";
         } else {
             document.getElementById("J" + week).getElementsByClassName("AwayTeam")[0].classList.add("myTeam");
-            document.getElementById("J" + week).classList.add("isAway");
+            document.getElementById("J" + week).className = "isAway";
         }
 
         if (details.children[0].innerHTML == "true") {
@@ -541,39 +542,91 @@ function setData(resp, callback) {
 function affichageSepare() {
     document.getElementById("Titre1T").style.display = "block";
     document.getElementById("Titre2T").style.display = "block";
-    document.getElementById("Match1T").style.display = "block";
-    document.getElementById("Match2T").style.display = "block";
+    var l = Calendrier.length - 1;
+    for (var i = 1; i <= l; i++) {
+        document.getElementById("J" + i).style.display = "block";
+    }
 }
 
 function affichageComplet() {
     document.getElementById("Titre1T").style.display = "none";
     document.getElementById("Titre2T").style.display = "none";
-    document.getElementById("Match1T").style.display = "inline";
-    document.getElementById("Match2T").style.display = "inline";
+    var l = Calendrier.length - 1;
+    for (var i = 1; i <= l; i++) {
+        document.getElementById("J" + i).style.display = "block";
+    }
+
 }
 
 function affichage1T() {
     document.getElementById("Titre1T").style.display = "block";
     document.getElementById("Titre2T").style.display = "none";
-    document.getElementById("Match1T").style.display = "block";
-    document.getElementById("Match2T").style.display = "none";
+    var l = Calendrier.length -1;
+    for (var i = 1; i <= l ; i++) {
+        if (i <= l/2) {
+            document.getElementById("J" + i).style.display = "block";
+        } else {
+            document.getElementById("J" + i).style.display = "none";
+        }
+        
+    }
+
 }
 
 function affichage2T() {
     document.getElementById("Titre1T").style.display = "none";
     document.getElementById("Titre2T").style.display = "block";
-    document.getElementById("Match1T").style.display = "none";
-    document.getElementById("Match2T").style.display = "block";
+    var l = Calendrier.length - 1;
+    for (var i = 1; i <= l; i++) {
+        if (i <= l / 2) {
+            document.getElementById("J" + i).style.display = "none";
+        } else {
+            document.getElementById("J" + i).style.display = "block";
+        }
+
+    }
 }
 
 function affichagePlayed() {
-
+    document.getElementById("Titre1T").style.display = "none";
+    document.getElementById("Titre2T").style.display = "none";
+    var l = Calendrier.length - 1;
+    for (var i = 1; i <= l; i++) {
+        var HS = document.getElementById('J' + i).getElementsByClassName("HomeScore")[0].innerHTML;
+        var AS = document.getElementById('J' + i).getElementsByClassName("AwayScore")[0].innerHTML;
+        if (HS == "" && AS == "") {
+            document.getElementById("J" + i).style.display = "none";
+        } else {
+            document.getElementById("J" + i).style.display = "block";
+        }
+    }
 }
 
 function affichageAway() {
-
+    document.getElementById("Titre1T").style.display = "none";
+    document.getElementById("Titre2T").style.display = "none";
+    var l = Calendrier.length - 1;
+    for (var i = 1; i <= l; i++) {
+        var cn = document.getElementById('J' + i).className;
+        if (cn == "isAway") {
+            document.getElementById("J" + i).style.display = "block";
+        } else {
+            document.getElementById("J" + i).style.display = "none";
+        }
+    }
 }
 
 function affichageHome() {
+    document.getElementById("Titre1T").style.display = "none";
+    document.getElementById("Titre2T").style.display = "none";
+    var l = Calendrier.length - 1;
+    for (var i = 1; i <= l; i++) {
+        var cn = document.getElementById('J' + i).className;
+        if (cn == "isHome") {
+            document.getElementById("J" + i).style.display = "block";
+        } else {
+            document.getElementById("J" + i).style.display = "none";
+        }
+    }
 
 }

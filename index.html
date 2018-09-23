@@ -16,28 +16,28 @@
 <body onload="FistInit()">
     <div id="controller">
         <span id="controllerAdv">
-            <span>Division : &nbsp;</span>
-            <select id="SelectTeam" class="0" onchange="changeTeam()"></select>
-            <span>Adversaire : &nbsp;</span>
-            <span id=SelectAdv></span>
+            <span id="spanSelectTeam">Division : &nbsp;<select id="SelectTeam" class="0" onchange="changeTeam()"></select></span>           
+            <span id="spanSelectAdv">Adversaire : &nbsp;<span id=SelectAdv></span></span>
             <button id="validationButton" disabled type="button" onclick="valider()">Valider</button>
         </span>
         <span id="controllerAffichage">
-            <span>Affichage : &nbsp;</span>
-            <select id="SelectAffichage" onchange="changeAffichage()">
-                <option value="Separed">Separé</option>
-                <option disabled value="Home">Domicile</option>
-                <option disabled value="Away">Exterieur</option>
-                <option value="Full">Complet</option>
-                <option value="1T">Premier Tour</option>
-                <option value="2T">Deuxieme Tour</option>
-                <option disabled value="Played">Joué</option>
-            </select>
+            <span id="spanSelectAffichage">
+                Affichage : &nbsp;
+                <select id="SelectAffichage" onchange="changeAffichage()">
+                    <option value="Separed">Separé</option>
+                    <option value="Home">Domicile</option>
+                    <option value="Away">Exterieur</option>
+                    <option value="Full">Complet</option>
+                    <option value="1T">Premier Tour</option>
+                    <option value="2T">Deuxieme Tour</option>
+                    <option value="Played">Joué</option>
+                </select>
+            </span>            
         </span>
     </div>
     <div id="loader" class="loader loader-default is-active" data-text data-blink></div>
-    <div id="Titre1T">Premier Tour</div>
-    <div id="Match1T">
+    <div id="flexContainer">
+        <div id="Titre1T">Premier Tour</div>
         <table id="J1">
             <colgroup>
                 <col class="colSize1">
@@ -566,9 +566,7 @@
                 </tr>
             </tbody>
         </table>
-    </div>
-    <div id="Titre2T">Deuxieme Tour</div>
-    <div id="Match2T">
+        <div id="Titre2T">Deuxieme Tour</div>
         <table id="J12">
             <colgroup>
                 <col class="colSize1">
@@ -1097,7 +1095,7 @@
                 </tr>
             </tbody>
         </table>
-    </div>
+    </div>  
     <script src="js/script.js"></script>
 </body>
 </html>
