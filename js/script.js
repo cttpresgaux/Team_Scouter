@@ -208,6 +208,11 @@ function clearDataByClassName(name) {
     var coll = document.getElementsByClassName(name);
     for (var i = 0; i < coll.length; i++) {
         coll[i].innerHTML = "";
+        if (name == "AwayTeam") {
+            coll[i].className = "AwayTeam";
+        } else if (name == "HomeTeam") {
+            coll[i].className = "HomeTeam";
+        }
     }
 }
 
