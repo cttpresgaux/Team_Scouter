@@ -21,6 +21,7 @@
             <button id="validationButton" disabled type="button" onclick="valider()">Valider</button>
         </span>
         <span id="controllerAffichage">
+            <span id="spanStatInd">Max/Moyenne : &nbsp;<input type="checkbox" id="MaxAverage" onchange="changeMaxAverage(this.checked)" /> </span>
             <span id="spanSelectAffichage">
                 Affichage : &nbsp;
                 <select id="SelectAffichage" onchange="changeAffichage()">
@@ -32,11 +33,222 @@
                     <option value="2T">Deuxieme Tour</option>
                     <option value="Played">Joué</option>
                 </select>
-            </span>            
+            </span>
         </span>
     </div>
     <div id="loader" class="loader loader-default is-active" data-text data-blink></div>
     <div id="flexContainer">
+        <table id="Average" class="MaxAverage displayNone">
+            <colgroup>
+                <col class="colSize1">
+                <col class="colSize1">
+                <col class="colSize3">
+                <col class="colSize3">
+                <col class="colSize2">
+                <col class="colSize3">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td class="Titre" colspan="6">Moyenne de l'équipe</td>
+                </tr>
+                <tr class="Player1">
+                    <td class="PlayerOrder">1</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                </tr>
+                <tr class="Player2">
+                    <td class="PlayerOrder">2</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                </tr>
+                <tr class="Player3">
+                    <td class="PlayerOrder">3</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                </tr>
+                <tr class="Player4">
+                    <td class="PlayerOrder">4</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="Max" class="MaxAverage displayNone">
+            <colgroup>
+                <col class="colSize1">
+                <col class="colSize1">
+                <col class="colSize3">
+                <col class="colSize3">
+                <col class="colSize2">
+                <col class="colSize3">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td class="Titre" colspan="6">Meilleure équipe alignée</td>
+                </tr>
+                <tr class="Player1">
+                    <td class="PlayerOrder">1</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                </tr>
+                <tr class="Player2">
+                    <td class="PlayerOrder">2</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                </tr>
+                <tr class="Player3">
+                    <td class="PlayerOrder">3</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                </tr>
+                <tr class="Player4">
+                    <td class="PlayerOrder">4</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="AverageHome" class="MaxAverage displayNone">
+            <colgroup>
+                <col class="colSize1">
+                <col class="colSize1">
+                <col class="colSize3">
+                <col class="colSize3">
+                <col class="colSize2">
+                <col class="colSize3">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td class="Titre" colspan="6">Moyenne de l'équipe (Domicile)</td>
+                </tr>
+                <tr class="Player1">
+                    <td class="PlayerOrder">1</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                </tr>
+                <tr class="Player2">
+                    <td class="PlayerOrder">2</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                </tr>
+                <tr class="Player3">
+                    <td class="PlayerOrder">3</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                </tr>
+                <tr class="Player4">
+                    <td class="PlayerOrder">4</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="MaxHome" class="MaxAverage displayNone">
+            <colgroup>
+                <col class="colSize1">
+                <col class="colSize1">
+                <col class="colSize3">
+                <col class="colSize3">
+                <col class="colSize2">
+                <col class="colSize3">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td class="Titre" colspan="6">Meilleure équipe alignée (Domicile)</td>
+                </tr>
+                <tr class="Player1">
+                    <td class="PlayerOrder">1</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                </tr>
+                <tr class="Player2">
+                    <td class="PlayerOrder">2</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                </tr>
+                <tr class="Player3">
+                    <td class="PlayerOrder">3</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                </tr>
+                <tr class="Player4">
+                    <td class="PlayerOrder">4</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="AverageAway" class="MaxAverage displayNone">
+            <colgroup>
+                <col class="colSize1">
+                <col class="colSize1">
+                <col class="colSize3">
+                <col class="colSize3">
+                <col class="colSize2">
+                <col class="colSize3">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td class="Titre" colspan="6">Moyenne de l'équipe (Exterieur)</td>
+                </tr>
+                <tr class="Player1">
+                    <td class="PlayerOrder">1</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                </tr>
+                <tr class="Player2">
+                    <td class="PlayerOrder">2</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                </tr>
+                <tr class="Player3">
+                    <td class="PlayerOrder">3</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                </tr>
+                <tr class="Player4">
+                    <td class="PlayerOrder">4</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="MaxAway" class="MaxAverage displayNone">
+            <colgroup>
+                <col class="colSize1">
+                <col class="colSize1">
+                <col class="colSize3">
+                <col class="colSize3">
+                <col class="colSize2">
+                <col class="colSize3">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td class="Titre" colspan="6">Meilleure équipe alignée (Exterieur)</td>
+                </tr>
+                <tr class="Player1">
+                    <td class="PlayerOrder">1</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                </tr>
+                <tr class="Player2">
+                    <td class="PlayerOrder">2</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                </tr>
+                <tr class="Player3">
+                    <td class="PlayerOrder">3</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                </tr>
+                <tr class="Player4">
+                    <td class="PlayerOrder">4</td>
+                    <td class="PlayerName" colspan="4"></td>
+                    <td class="PlayerRanking"></td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="flexSeparator"></div>
         <div id="Titre1T">Premier Tour</div>
         <table id="J1">
             <colgroup>

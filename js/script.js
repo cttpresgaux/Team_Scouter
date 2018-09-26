@@ -1,14 +1,16 @@
 // GLOBAL
 
 var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+var rankingValue = ["NC", "E6", "E4", "E2", "E0", "D6", "D4", "D2", "D0", "C6", "C4", "C2", "C0", "B6", "B4", "B2", "B0", "A"];
 
 var Divs = [];
 var AdvDB = {};
 var Calendrier = [];
 var NumTeam = 0;
 
-
-
+var PlayersByWeek = [];
+var HomeWeek = [];
+var AwayWeek = [];
 
 // Function
 
@@ -60,6 +62,38 @@ function Init() {
         }
     }
     document.getElementById("TeamA").style = "";
+
+
+    //LocalStorage
+    var check = localStorage.getItem('_Storage_MaxAverage');
+    if (check != null) {
+        if (check == "true") {
+            document.getElementById("MaxAverage").checked = true;
+            changeMaxAverage(true);
+        }
+
+    }
+    var value = localStorage.getItem('_Storage_SelectAffichage');
+    if (value != null) {
+        var st = document.getElementById("SelectAffichage");
+        for (var i = 0; i < st.options.length; i++) {
+            if (st.options[i].value == value) {
+                st.selectedIndex = i;
+            }
+        }
+        changeAffichage(value);
+    }
+    var value = localStorage.getItem('_Storage_SelectTeam');
+    if (value != null) {
+        var st = document.getElementById("SelectTeam");
+        for (var i = 0; i < st.options.length; i++) {
+            if (st.options[i].value == value) {
+                st.selectedIndex = i;
+            }
+        }
+        changeTeam();
+    }
+
 	hideLoader();
 };
 
@@ -99,36 +133,48 @@ function changeTeam() {
     var newIndex = document.getElementById("SelectTeam").selectedIndex;
     var oldIndex = document.getElementById("SelectTeam").className;
 
+    localStorage.setItem("_Storage_SelectTeam", document.getElementById("SelectTeam").value)
+
     document.getElementById("SelectTeam").className = newIndex;
 
     document.getElementById("SelectAdv").childNodes[oldIndex].style = "display: none;";
     document.getElementById("SelectAdv").childNodes[newIndex].style = "";
 }
 
-function changeAffichage() {
-    var index = document.getElementById("SelectAffichage").value;
+function changeAffichage(value) {
+    value = value || document.getElementById("SelectAffichage").value;
+    localStorage.setItem("_Storage_SelectAffichage", value);
 
-    switch (index) {
+    var bool = document.getElementById("MaxAverage").checked;
+
+    switch (value) {
         case "Separed":
             affichageSepare();
+            displayMaxAverage(bool, bool, bool)
             break;
         case "Full":
             affichageComplet();
+            displayMaxAverage(bool, bool, bool)
             break;
         case "1T":
             affichage1T()
+            displayMaxAverage(bool, bool, bool)
             break;
         case "2T":
             affichage2T();
+            displayMaxAverage(bool, bool, bool)
             break;
         case "Played":
             affichagePlayed();
+            displayMaxAverage(bool, bool, bool)
             break;
         case "Home":
             affichageHome();
+            displayMaxAverage(false, bool, false)
             break;
         case "Away":
             affichageAway();
+            displayMaxAverage(false, false, bool)
             break;
     }
 
@@ -466,12 +512,20 @@ function setData(resp, callback) {
         if (isHome) {
             document.getElementById("J" + week).getElementsByClassName("HomeTeam")[0].classList.add("myTeam");
             document.getElementById("J" + week).className = "isHome";
+            
         } else {
             document.getElementById("J" + week).getElementsByClassName("AwayTeam")[0].classList.add("myTeam");
             document.getElementById("J" + week).className = "isAway";
+            
         }
 
         if (details.children[0].innerHTML == "true") {
+            if (isHome) {
+                HomeWeek.push(week);
+            } else {
+                AwayWeek.push(week);
+            }
+
             //alert("Details OK");
             var detailedTeam = null;
 
@@ -481,11 +535,14 @@ function setData(resp, callback) {
                 } else if ( (!isHome) && details.children[j].localName == "AwayPlayers") {
                     detailedTeam = details.children[j].children;
                 }
-            }            
+            }      
+
+            //Save Data for Max/Average
+            PlayersByWeek[week] = [];
 
             for (var k = 0; k < detailedTeam.length; k++) {
                 if (detailedTeam[k].localName == "Players") {
-                    var Player = { position: 0, firstName: "", lastName: "", ranking: "", victoryCount: "", IsForfeited: false };
+                    var Player = { position: 0,id: 0, firstName: "", lastName: "", ranking: "", victoryCount: "", IsForfeited: false };
 
                     for (var l = 0; l < detailedTeam[k].children.length; l++) {
                         switch (detailedTeam[k].children[l].localName) {
@@ -510,8 +567,14 @@ function setData(resp, callback) {
                             case "IsForfeited":
                                 Player.IsForfeited = detailedTeam[k].children[l].innerHTML == "true";
                                 break;
+                            case "UniqueIndex":
+                                Player.UniqueIndex = parseInt(detailedTeam[k].children[l].innerHTML);
+                                break;
                         }
                     }
+
+                    //Save Data for Max/Average
+                    PlayersByWeek[week][Player.position] = Player;
 
                     //Affichage Data
                     if (Player.position > 0 && Player.position < 5) {
@@ -529,12 +592,102 @@ function setData(resp, callback) {
 
         }
     }
-	
+    var weekPlayed = [];
+    for (var i = 1; i < PlayersByWeek.length; i++) {
+        weekPlayed.push(i)
+    }
+    setMaxAverage(weekPlayed, "Max", "Average");
+    setMaxAverage(HomeWeek, "MaxHome", "AverageHome");
+    setMaxAverage(AwayWeek, "MaxAway", "AverageAway");
 	callback();
 
 }
 
+function setMaxAverage(weekToCheck, MaxId, AverageId) {
+    
+    var result = getMaxAverage(weekToCheck);
+    //Max
+    for (var i = 0; i < result.BestTeam.length; i++) {
+        var p = result.BestTeam[i];
+        var el = document.getElementById(MaxId).getElementsByClassName("Player" + p.position)[0];
+        el.children[1].innerText = p.lastName + " " + p.firstName;
+        el.children[2].innerText = p.ranking;
+    }
+    //Average
+    var ranks = [];
+    for (var i = 1; i < result.AverageP.length; i++) {
+        var t = 0;
+        for (var j = 0; j < result.AverageP[i].length; j++) {
+            t += result.AverageP[i][j];
+        }
+        t = t / (result.AverageP[i].length);
+        t = Math.round(t);
+        ranks.push(rankingValue[t]);
+    }
+    // Player who played all matchs
+    var allM = [];
+    for (var i = 0; i < result.PlayerMatchCount.length; i++) {
+        if (result.PlayerMatchCount[i] == weekToCheck.length) {
+            allM.push(result.PlayerInTeam[i]);
+        }
+    }
+    //Write in HTML
+    for (var i = 0; i < ranks.length; i++) {
+        var p = {firstName: " ?????", lastName: "????? ", ranking: ranks[i]};
+        for (var j = 0; j < allM.length; j++) {
+            if (allM[j] != null && allM[j].ranking == ranks[i]) {
+                p = allM[j];
+                allM[j] = null;
+                j = allM.length + 7777; // Exit FOR
+            }
+        }
+        var el = document.getElementById(AverageId).getElementsByClassName("Player" + (i+1))[0];
+        el.children[1].innerText = p.lastName + " " + p.firstName;
+        el.children[2].innerText = p.ranking;
+    }
+    return;
+}
 
+
+function getMaxAverage(weekToCheck) {
+    var BestTeam = [];
+    var BestTeamForce = 0;
+
+    var AverageP = [null, [], [], [], []];
+
+    var MatchPlayed = weekToCheck.length - 1;
+    var PlayerInTeamId = []
+    var PlayerInTeam = []
+    var PlayerMatchCount = [];
+
+    for (var i = 0; i < weekToCheck.length; i++) {  // every week
+        var week = weekToCheck[i];
+        var team = [];
+        var teamForce = 0;
+        for (var j = 1; j < PlayersByWeek[week].length; j++) { //every Player
+            var p = PlayersByWeek[week][j];
+
+            AverageP[p.position].push(rankingValue.indexOf(p.ranking));
+            var index = PlayerInTeamId.indexOf(p.UniqueIndex);
+            if (index == -1) {
+                PlayerInTeamId.push(p.UniqueIndex);
+                PlayerInTeam.push(p);
+                PlayerMatchCount.push(1);
+            } else {
+                PlayerMatchCount[index] += 1;
+            }
+
+            team.push(p);
+            teamForce += rankingValue.indexOf(p.ranking);
+        }
+        if (teamForce >= BestTeamForce) {
+            BestTeam = team;
+        }
+
+    }
+
+    return { "BestTeam": BestTeam, "AverageP": AverageP, "PlayerInTeam": PlayerInTeam, "PlayerMatchCount": PlayerMatchCount };
+}
 
 
 //Function Affichage
@@ -629,4 +782,33 @@ function affichageHome() {
         }
     }
 
+}
+
+function changeMaxAverage(check) {
+    localStorage.setItem("_Storage_MaxAverage", check);
+    changeAffichage();
+}
+
+function displayMaxAverage(all,home,away) {
+    if (all) {
+        document.getElementById("Max").className = "MaxAverage";
+        document.getElementById("Average").className = "MaxAverage";
+    } else {
+        document.getElementById("Max").className = "MaxAverage displayNone";
+        document.getElementById("Average").className = "MaxAverage displayNone";
+    }
+    if (home) {
+        document.getElementById("MaxHome").className = "MaxAverage";
+        document.getElementById("AverageHome").className = "MaxAverage";
+    } else {
+        document.getElementById("MaxHome").className = "MaxAverage displayNone";
+        document.getElementById("AverageHome").className = "MaxAverage displayNone";
+    }
+    if (away) {
+        document.getElementById("MaxAway").className = "MaxAverage";
+        document.getElementById("AverageAway").className = "MaxAverage";
+    } else {
+        document.getElementById("MaxAway").className = "MaxAverage displayNone";
+        document.getElementById("AverageAway").className = "MaxAverage displayNone";
+    }
 }

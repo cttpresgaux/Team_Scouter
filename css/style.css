@@ -58,8 +58,14 @@
     padding: 20px;
 }
 
-#Titre1T{
+#flexContainer > #flexSeparator {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    height: 2px;
+}
 
+#Titre1T {
 }
 
 #Titre2T {
@@ -76,6 +82,13 @@
 	width: 70px;
 }
 
+.Titre {
+    font: bolder 18px arial;
+    vertical-align: middle;
+    text-align: center;
+    color: white;
+    background-color: black;
+}
 
 .Week{
     font: bolder 18px arial;
@@ -117,7 +130,20 @@ td, th {
     background-color: lightskyblue;
 }
 #flexContainer > .isHome {
+    border-color: blue;
 }
 #flexContainer > .isAway {
     border-color: red;
+}
+
+.displayNone {
+    display: none;
+}
+
+#AverageHome td.Titre, #MaxHome td.Titre {
+    background-color: blue;
+}
+
+#AverageAway td.Titre, #MaxAway td.Titre {
+    background-color: red;
 }
