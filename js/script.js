@@ -195,6 +195,7 @@ function valider() {
             +       '<tab:GetMatchesRequest>'
             +           '<tab:Club>' + adv.club + '</tab:Club>'
             +           '<tab:Team>' + letter + '</tab:Team>'
+    	    +		'<tab:DivisionCategory>1</tab:DivisionCategory>'
             +           '<tab:WithDetails>Yes</tab:WithDetails>'
             +       '</tab:GetMatchesRequest>'
             +   '</soapenv:Body>'
