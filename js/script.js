@@ -683,6 +683,7 @@ function getMaxAverage(weekToCheck) {
         }
         if (teamForce >= BestTeamForce) {
             BestTeam = team;
+            BestTeamForce = teamForce;
         }
 
     }
