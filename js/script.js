@@ -665,22 +665,24 @@ function getMaxAverage(weekToCheck) {
         var week = weekToCheck[i];
         var team = [];
         var teamForce = 0;
-        for (var j = 1; j < PlayersByWeek[week].length; j++) { //every Player
-            var p = PlayersByWeek[week][j];
+        if (PlayersByWeek[week] != undefined) {
+	        for (var j = 1; j < PlayersByWeek[week].length; j++) { //every Player
+	            var p = PlayersByWeek[week][j];
 
-            AverageP[p.position].push(rankingValue.indexOf(p.ranking));
-            var index = PlayerInTeamId.indexOf(p.UniqueIndex);
-            if (index == -1) {
-                PlayerInTeamId.push(p.UniqueIndex);
-                PlayerInTeam.push(p);
-                PlayerMatchCount.push(1);
-            } else {
-                PlayerMatchCount[index] += 1;
-            }
+	            AverageP[p.position].push(rankingValue.indexOf(p.ranking));
+	            var index = PlayerInTeamId.indexOf(p.UniqueIndex);
+	            if (index == -1) {
+	                PlayerInTeamId.push(p.UniqueIndex);
+	                PlayerInTeam.push(p);
+	                PlayerMatchCount.push(1);
+	            } else {
+	                PlayerMatchCount[index] += 1;
+	            }
 
-            team.push(p);
-            teamForce += rankingValue.indexOf(p.ranking);
-        }
+	            team.push(p);
+	            teamForce += rankingValue.indexOf(p.ranking);
+	        }
+	    }
         if (teamForce >= BestTeamForce) {
             BestTeam = team;
             BestTeamForce = teamForce;
