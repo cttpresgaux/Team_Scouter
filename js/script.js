@@ -471,14 +471,14 @@ function setData(resp, callback) {
                     break;
                 case "HomeTeam":
                     HomeTeam = matches[i].children[_i].innerHTML;
-					HomeTeam = HomeTeam.replace("Palette", "Pal.");
+		    //HomeTeam = HomeTeam.replace("Palette", "Pal.");
                     break;
                 case "AwayClub":
                     AwayClub = matches[i].children[_i].innerHTML;
                     break;
                 case "AwayTeam":
                     AwayTeam = matches[i].children[_i].innerHTML;
-					AwayTeam = AwayTeam.replace("Palette", "Pal.");
+		    //AwayTeam = AwayTeam.replace("Palette", "Pal.");
                     break;
                 case "IsHomeForfeited":
                     IsHomeForfeited = matches[i].children[_i].innerHTML;
