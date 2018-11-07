@@ -595,7 +595,7 @@ function setData(resp, callback) {
     }
     var weekPlayed = [];
     for (var i = 1; i < PlayersByWeek.length; i++) {
-        weekPlayed.push(i)
+    	if (PlayersByWeek[i] != undefined) {weekPlayed.push(i)}    
     }
     setMaxAverage(weekPlayed, "Max", "Average");
     setMaxAverage(HomeWeek, "MaxHome", "AverageHome");
