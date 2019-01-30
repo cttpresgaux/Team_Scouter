@@ -250,6 +250,10 @@ function clearAllData() {
     clearDataByClassName("PlayerName");
     clearDataByClassName("PlayerRanking");
     clearDataByClassName("VictoryCount");
+	
+    PlayersByWeek = [];
+    HomeWeek = [];
+    AwayWeek = [];
 }
 
 function clearDataByClassName(name) {
