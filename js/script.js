@@ -195,7 +195,7 @@ function valider() {
             +       '<tab:GetMatchesRequest>'
             +           '<tab:Club>' + adv.club + '</tab:Club>'
             +           '<tab:Team>' + letter + '</tab:Team>'
-    	    +		'<tab:DivisionCategory>1</tab:DivisionCategory>'
+    	    //+		    '<tab:DivisionCategory>1</tab:DivisionCategory>'
             +           '<tab:WithDetails>Yes</tab:WithDetails>'
             +       '</tab:GetMatchesRequest>'
             +   '</soapenv:Body>'
@@ -232,6 +232,7 @@ function soap(strRequest, callback, _afterCallback) {
 
     //FOR TESTING: display results in an alert box once the response is received
     xmlhttp.onreadystatechange = function () {
+        //alert(xmlhttp.readyState);
         if (xmlhttp.readyState == 4) {
             //alert(xmlhttp.responseText);
             callback(xmlhttp.responseText, _afterCallback);
